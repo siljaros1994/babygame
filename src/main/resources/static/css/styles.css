@@ -1,0 +1,54 @@
+body {
+    background: #222;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 225px;
+    box-sizing: border-box;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 45px;
+    padding: 140px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    width: 120%;
+    max-width: 650px;
+}
+
+h1 {
+    font-family: "Luckiest Guy", Arial, sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+@media (min-width: 992px) {
+    body {
+        font-size: 20px;
+    }
+}

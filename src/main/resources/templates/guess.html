@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Baby Gender Guesser</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <script th:src="@{/js/canvas.js}" defer></script>
+</head>
+<body>
+
+<canvas id="canvas"></canvas>
+
+<div class="container mt-5">
+    <h1 class="text-center text-white">Is the Baby a girl or boy?</h1>
+    <form th:action="@{/submitGuess}" method="post" th:object="${guess}">
+        <div class="mb-3">
+            <label for="guesserName" class="form-label text-white">Your Name:</label>
+            <input type="text" class="form-control" id="guesserName" th:field="*{guesserName}" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label text-white">Choose a Gender:</label>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="genderChoice" id="boy" value="boy" th:field="*{genderChoice}" required>
+                <label class="form-check-label text-white" for="boy">Boy</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="genderChoice" id="girl" value="girl" th:field="*{genderChoice}" required>
+                <label class="form-check-label text-white" for="girl">Girl</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Guess</button>
+    </form>
+    <div class="mt-4">
+        <h2 class="text-center text-white">Results</h2>
+        <p class="text-center text-white" th:if="${totalGuesses == 0}">No guesses yet. Be the first!</p>
+        <p class="text-center text-white" th:if="${totalGuesses > 0}">Total Guesses: <span th:text="${totalGuesses}"></span></p>
+        <div class="row justify-content-center" th:if="${totalGuesses > 0}">
+            <div class="col-md-6 text-center">
+                <div class="card bg-primary text-white mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Boy</h5>
+                        <p class="card-text" th:text="${boyCount}">0</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="card bg-danger text-white mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">Girl</h5>
+                        <p class="card-text" th:text="${girlCount}">0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
