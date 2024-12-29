@@ -39,6 +39,7 @@ public class GuessController {
         model.addAttribute("boyCount", genderCounts.getOrDefault("boy", 0L));
         model.addAttribute("girlCount", genderCounts.getOrDefault("girl", 0L));
         model.addAttribute("totalGuesses", allGuesses.size());
+        model.addAttribute("allGuesses", allGuesses);
         return "guess";
     }
 }
